@@ -1,20 +1,8 @@
-<?php
-//session_start();
-//session_destroy();
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Receptor de datos</title>
-</head>
-<body>
+    <?php include('./00_header.php'); ?>
     <h2>Sesion</h2>
     <ul></ul>
     <?php
-    if(isset($_SESSION ) && !is_null($_SESSION['data']))
+    if(isset($_SESSION['data']) && !is_null($_SESSION['data']) &&  !empty($_GET))
     {
         foreach($_SESSION['data'] as $data)
         {
@@ -27,7 +15,7 @@
     }
     ?>
     </ul>
-    <h3>Get y post</h3>
+    <?= '<h2> Get y Post </h2>' ?>
     <?php
     if(isset($_GET) && !is_null($_GET) && !empty($_GET))
     {
