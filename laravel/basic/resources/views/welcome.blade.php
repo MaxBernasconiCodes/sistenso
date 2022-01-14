@@ -18,6 +18,9 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
+            a{
+                color: hsla(0, 0%, 80%,1);
+            }
         </style>
     </head>
     <body class="antialiased">
@@ -45,6 +48,7 @@
                     </svg>
                 </div>
                 <a href="{{route('posts')}}">Posts</a>
+                <a href="{{route('posts.create')}}">Nuevo</a>
                 </div>
             </div>
         </div>

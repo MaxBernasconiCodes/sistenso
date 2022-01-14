@@ -14,7 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::all(); //esto trae solamente los que no estan eliminados
         $title = 'Index Posts';
         return view('posts.index',compact(['title','posts']));
     }
@@ -37,7 +37,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        return 'Esta aqui';
+        $request->validate([
+            'title'=> 'required|min:5|unique:posts,title'
+        ]);
+
+        Post::create($request->all());
+        return redirect()->route('posts');
     }
 
     /**
@@ -48,7 +53,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -59,7 +64,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -71,7 +76,13 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $request->validate([
+            'title'=> 'required|min:5',
+            'body' => '',
+        ]);
+
+        $post->update($request->all());
+        return redirect()->route('posts');
     }
 
     /**
@@ -82,6 +93,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('posts');
     }
+
 }
