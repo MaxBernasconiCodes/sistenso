@@ -47,8 +47,9 @@
                         </g>
                     </svg>
                 </div>
-                <a href="{{route('posts')}}">Posts</a>
-                <a href="{{route('posts.create')}}">Nuevo</a>
+                <a>Post: </a>
+                <a href="{{route('posts.index')}}">Index |</a>
+                <a href="{{route('posts.create')}}">Nuevo |</a>
                 </div>
             </div>
         </div>

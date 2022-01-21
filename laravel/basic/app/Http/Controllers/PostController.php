@@ -42,7 +42,7 @@ class PostController extends Controller
         ]);
 
         Post::create($request->all());
-        return redirect()->route('posts');
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -82,7 +82,7 @@ class PostController extends Controller
         ]);
 
         $post->update($request->all());
-        return redirect()->route('posts');
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -94,7 +94,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('posts');
+        return redirect()->route('posts.index');
     }
 
 }

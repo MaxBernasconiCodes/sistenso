@@ -1,7 +1,7 @@
 @extends('posts.layout')
 @section('content')
         <h1>Post: nuevo</h1>
-        <form action="{{route('post.store')}}" method="post">
+        <form action="{{route('posts.store')}}" method="post">
             @csrf
             <input type="text" id="title" name="title" class="border-2 rounded text-black-50" placeholder="Titulo">
             @error('title')
