@@ -18,6 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/posts/{id?}', 'App\Http\Controllers\PostController@custom');
-Route::resource('posts',PostController::class);
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 
+Route::resource('posts', PostController::class);
