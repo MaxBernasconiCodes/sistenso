@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +18,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+Route::get('/crearadmin', 'App\Http\Controllers\PostController@crearadmin')->name('crearadmin');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
+
 })->name('dashboard');
 
-Route::resource('posts', PostController::class);
+Route::middleware(['auth:sanctum', 'verified'])->group( function() {
+    Route::resource('posts', PostController::class);
+    Route::resource('comments', CommentController::class);
+});

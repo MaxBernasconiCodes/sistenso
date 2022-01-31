@@ -1,15 +1,15 @@
 <x-app-layout>
     <ul class="flex flex-col  ">
-        @forelse ($posts as $post )
+        @forelse ($comments as $comment )
             <li class="flex justify-evenly p-2 m-1 reunded shadow odd:bg-blue-100 even:bg-red-300">
-                <p>{{$post->title}}
+                <p>{{$comment->title}}
                 :
-                {{$post->body}}</p>
-                <a href="{{route('posts.edit', $post->id)}}" class="border-black border-2 p-2 bg-green-400 hover:bg-gray-600 hover:shadow"> editar </a>
-                <a href="{{route('posts.show', $post->id)}}" class="border-black border-2 p-2 bg-blue-400 hover:bg-gray-600 hover:shadow"> Ver </a>
+                {{$comment->body}}</p>
+                <a href="{{route('comments.edit', $comment->id)}}" class="border-black border-2 p-2 bg-green-400 hover:bg-gray-600 hover:shadow"> editar </a>
+                <a href="{{route('comments.show', $comment->id)}}" class="border-black border-2 p-2 bg-blue-400 hover:bg-gray-600 hover:shadow"> Ver </a>
 
                 <form
-                action="{{route('posts.destroy',$post->id)}}"
+                action="{{route('comments.destroy',$comment->id)}}"
                 method="POST"
                 >
                 @method('DELETE')
